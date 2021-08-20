@@ -1,17 +1,15 @@
 ﻿using curso.api.Filters;
+using curso.api.Infraestructure.Data;
 using curso.api.models;
 using curso.api.models.Usuarios;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Annotations;
 using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace curso.api.Controllers
 {
@@ -84,6 +82,9 @@ namespace curso.api.Controllers
             //    return BadRequest(new ValidaCampoViewModelOutput(ModelState.SelectMany(sm => sm.Value.Errors).Select(s => s.ErrorMessage)));
             //}
             //código não necessário por estar usando a validação customizada. através da anotação ValidacaoModelStateCustomizado
+            var options = new DbContextOptionsBuilder<CursoDbContext>();
+            options.UseSqlServer("");
+            CursoDbContext contexto = new CursoDbContext(options);
             return Created("", registroViewModelInput);
         }
     }
