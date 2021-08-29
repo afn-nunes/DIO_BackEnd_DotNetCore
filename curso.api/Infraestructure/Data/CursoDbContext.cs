@@ -6,7 +6,7 @@ namespace curso.api.Infraestructure.Data
 {
     public class CursoDbContext: DbContext
     {
-        public CursoDbContext(DbContextOptionsBuilder<CursoDbContext> options): base(options)
+        public CursoDbContext(DbContextOptions<CursoDbContext> options) : base(options)
         {
 
         }
@@ -18,6 +18,7 @@ namespace curso.api.Infraestructure.Data
             base.OnModelCreating(modelBuilder);
         }
 
-        public DbSet<Usuario> usuario { get; set; }
+        public DbSet<Usuario> Usuario { get; set; }
+        public DbSet<Curso> Curso { get; set; }
     }
 }

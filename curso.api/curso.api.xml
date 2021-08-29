@@ -4,6 +4,17 @@
         <name>curso.api</name>
     </assembly>
     <members>
+        <member name="T:curso.api.Controllers.CursoController">
+            <summary>
+            Classe de controle de cursos
+            </summary>
+        </member>
+        <member name="M:curso.api.Controllers.CursoController.#ctor(curso.api.Business.Repositories.ICursoRepository)">
+            <summary>
+            Construtor da classe CursoController
+            </summary>
+            <param name="cursoRepository"></param>
+        </member>
         <member name="M:curso.api.Controllers.CursoController.Post(curso.api.models.Cursos.CursoViewModelInput)">
             <summary>
             Este serviço permite cadastrar curso para o usuário autenticado
@@ -16,18 +27,52 @@
             </summary>
             <returns>Retorna status 201 e dados do curso do usuário</returns>
         </member>
+        <member name="T:curso.api.Controllers.UsuarioController">
+            <summary>
+            Classe de controle de acesso e criação de usuários
+            </summary>
+        </member>
         <member name="M:curso.api.Controllers.UsuarioController.Logar(curso.api.models.Usuarios.LoginViewModelInput)">
             <summary>
-            teste
+            Este serviço permite Autenticar um usuário existente
             </summary>
             <param name= "loginViewModelInput"></param>
             <returns></returns>
         </member>
         <member name="M:curso.api.Controllers.UsuarioController.Registrar(curso.api.models.Usuarios.RegistroViewModelInput)">
             <summary>
-            teste
+            Este serviço permite cadastrar um usuário não existente
             </summary>
-            <param name= "registroViewModelInput"></param>
+            <param name= "loginViewModelInput">View model do registro login</param>
+            <returns></returns>
+        </member>
+        <member name="T:curso.api.Infraestructure.Repositories.CursoRepository">
+            <summary>
+            Repositório de cursos
+            </summary>
+        </member>
+        <member name="M:curso.api.Infraestructure.Repositories.CursoRepository.#ctor(curso.api.Infraestructure.Data.CursoDbContext)">
+            <summary>
+            Construtor do repositório de cursos
+            </summary>
+            <param name="contexto"></param>
+        </member>
+        <member name="M:curso.api.Infraestructure.Repositories.CursoRepository.Adicionar(curso.api.Business.Entities.Curso)">
+            <summary>
+            Método responsável por adicionar um novo curso
+            </summary>
+            <param name="curso"></param>
+        </member>
+        <member name="M:curso.api.Infraestructure.Repositories.CursoRepository.Commit">
+            <summary>
+            método responsável por persistir os cursos adicionados no banco.
+            </summary>
+        </member>
+        <member name="M:curso.api.Infraestructure.Repositories.CursoRepository.ObterPorUsuario(System.Int32)">
+            <summary>
+            Método responsável por listar os cursos de um determinado usuário
+            </summary>
+            <param name="codigoUsuario"></param>
             <returns></returns>
         </member>
     </members>

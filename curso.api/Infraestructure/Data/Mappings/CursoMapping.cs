@@ -8,7 +8,7 @@ namespace curso.api.Infraestructure.Data.Mappings
     {
         public void Configure(EntityTypeBuilder<Curso> builder)
         {
-            builder.ToTable("TM_USUARIO");
+            builder.ToTable("TB_CURSO");
             builder.HasKey(p => p.Codigo);
             builder.Property(p => p.Codigo).ValueGeneratedOnAdd();
             builder.Property(p => p.Nome);
