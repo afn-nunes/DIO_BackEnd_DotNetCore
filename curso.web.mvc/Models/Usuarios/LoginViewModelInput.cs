@@ -1,12 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace curso.api.models.Usuarios
+namespace curso.web.mvc.Models.Usuarios
 {
-    //Registro do usuario
-    public class RegistroViewModelInput
+    public class LoginViewModelInput
     {
-        public int Codigo { get; set; }
-
         [Required(ErrorMessage = "O Login é obrigatório")]
         public string Login { get; set; }
 
@@ -16,7 +17,6 @@ namespace curso.api.models.Usuarios
 
         [Required(ErrorMessage = "A Senha é obrigatório")]
         public string Senha { get; set; }
-
 
     }
 }
