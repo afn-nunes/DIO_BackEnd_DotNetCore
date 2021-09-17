@@ -10,4 +10,8 @@
     <PackageReference Include="Refit.HttpClientFactory" Version="5.2.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\curso.api\curso.api.csproj" />
+  </ItemGroup>
+
 </Project>

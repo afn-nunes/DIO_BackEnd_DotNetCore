@@ -4,8 +4,8 @@ using curso.api.Filters;
 using curso.api.models;
 using curso.api.models.Usuarios;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 using Swashbuckle.AspNetCore.Annotations;
+using System.Threading.Tasks;
 
 namespace curso.api.Controllers
 {
@@ -38,9 +38,9 @@ namespace curso.api.Controllers
         [HttpPost]
         [Route("logar")]
         [ValidacaoModelStateCustomizado]
-        public IActionResult Logar(LoginViewModelInput loginViewModelInput) {
+        public async Task<IActionResult> Logar(LoginViewModelInput loginViewModelInput) {
 
-            var usuario =_usuarioReporitory.ObterUsuario(loginViewModelInput.Login);
+            var usuario = await _usuarioReporitory.ObterUsuarioAsync(loginViewModelInput.Login);
 
             if (usuario == null)
             {
@@ -49,9 +49,9 @@ namespace curso.api.Controllers
 
             var usuarioViewModelOutput = new RegistroViewModelInput()
             {
-                Codigo = 1,
-                Login = "André Nunes",
-                Email = "afn.nunes@gmail.com"
+                Codigo = usuario.Codigo,
+                Login = usuario.Login,
+                Email = usuario.Email
             };
 
             var token = _authenticationService.GerarToken(usuarioViewModelOutput);
@@ -73,12 +73,23 @@ namespace curso.api.Controllers
         [HttpPost]
         [Route("registrar")] 
         [ValidacaoModelStateCustomizado]
-        public IActionResult Registrar(RegistroViewModelInput loginViewModelInput)
+        public async Task<IActionResult> Registrar(RegistroViewModelInput loginViewModelInput)
         {
-            var usuario = new Usuario();            
-            usuario.Login = loginViewModelInput.Login;
-            usuario.Senha = loginViewModelInput.Senha;
-            usuario.Email = loginViewModelInput.Email;
+            var usuario = await _usuarioReporitory.ObterUsuarioAsync(loginViewModelInput.Login);
+
+            if (usuario != null)
+            {
+                return BadRequest("Usuário já cadastrado");
+            }
+
+            usuario = new Usuario
+            {
+                Login = loginViewModelInput.Login,
+                Senha = loginViewModelInput.Senha,
+                Email = loginViewModelInput.Email
+            };
+
+
 
 
             _usuarioReporitory.Adicionar(usuario);

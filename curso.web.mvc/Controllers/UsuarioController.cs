@@ -26,27 +26,7 @@ namespace curso.web.mvc.Controllers
 
         [HttpPost]
         public async Task<IActionResult> Cadastrar(RegistrarUsuarioViewModelInput registrarUsuarioViewModelInput)
-        {
-            HttpClientHandler clientHandler = new HttpClientHandler();
-            //refatoração com refit dados alterados para o startup
-            //clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
-
-            //var httpClient = new HttpClient(clientHandler);
-            //httpClient.BaseAddress = new Uri("https://localhost:5001/");
-
-            //var registrarUsuarioViewModelInputJson = JsonConvert.SerializeObject(registrarUsuarioViewModelInput);
-            //var httpContent = new StringContent(registrarUsuarioViewModelInputJson, Encoding.UTF8, "application/json");
-            //var httpPost =  httpClient.PostAsync("/api/v1/usuario/registrar", httpContent).GetAwaiter().GetResult();
-
-            //if (httpPost.StatusCode == System.Net.HttpStatusCode.Created)
-            //{                
-            //    ModelState.AddModelError("", "Dados cadastrados com sucesso");
-            //}
-            //else 
-            //{
-            //    ModelState.AddModelError("", "Erro ao cadastrar");
-            //}
-
+        {            
             try
             {
                 var usuario = await _usuarioService.Registrar(registrarUsuarioViewModelInput);

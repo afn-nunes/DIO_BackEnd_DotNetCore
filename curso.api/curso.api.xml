@@ -75,5 +75,17 @@
             <param name="codigoUsuario"></param>
             <returns></returns>
         </member>
+        <member name="P:curso.api.models.Cursos.CursoViewModelInput.Nome">
+            <summary>
+            
+            </summary>
+            
+        </member>
+        <member name="P:curso.api.models.Cursos.CursoViewModelInput.Descricao">
+            <summary>
+            
+            </summary>
+            
+        </member>
     </members>
 </doc>
