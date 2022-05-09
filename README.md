@@ -7,3 +7,6 @@ Depois instalar o pacote do swagger clicando em dependências, gerenciar pacotes
 Swashbuckle.AspNetCore.Swagger
 Swashbuckle.AspNetCore.SwaggerUI
 Adicionar as configurações do wagger em startup.cs
+
+# Annnotations
+Instalar Swashbuckle.AspNetCore.Annotations
