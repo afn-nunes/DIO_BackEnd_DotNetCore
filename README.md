@@ -16,9 +16,10 @@ Instalar Swashbuckle.AspNetCore.Annotations
 
 # ConfigureApiBehaviorOptions
 Adicionar no startup ConfigureApiBehaviorOptions mudando a propriedade SuppressModelStateInvalidFilter para True  
-na Controller passar a validação  dentro de método 
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(new ValidaCampoViewModelOutput(ModelState.SelectMany(sm => sm.Value.Errors).Select(s => s.ErrorMessage)));
-            }
+  
+Criar no projeto a pasta Filter para interceptar as badRequests e passar um model state customizado
+
+Na controller, passar a modelState no cabeçalho do método - [ValidacaoModelStateCustomizado]
+
+
 
