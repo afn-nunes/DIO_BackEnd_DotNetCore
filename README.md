@@ -11,6 +11,14 @@ Swashbuckle.AspNetCore.SwaggerUI
 
 Adicionar as configurações do wagger em startup.cs  
 
-
 # Annnotations
 Instalar Swashbuckle.AspNetCore.Annotations
+
+# ConfigureApiBehaviorOptions
+Adicionar no startup ConfigureApiBehaviorOptions mudando a propriedade SuppressModelStateInvalidFilter para True  
+na Controller passar a validação  dentro de método 
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new ValidaCampoViewModelOutput(ModelState.SelectMany(sm => sm.Value.Errors).Select(s => s.ErrorMessage)));
+            }
+
