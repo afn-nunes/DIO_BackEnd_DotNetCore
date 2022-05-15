@@ -21,5 +21,34 @@ Criar no projeto a pasta Filter para interceptar as badRequests e passar um mode
 
 Na controller, passar a modelState no cabeçalho do método - [ValidacaoModelStateCustomizado]
 
+# Configurando as proteções da API com jwt
+Biblioteca microsoft.AspnetCore.Authentication 
+
+Biblioteca microsoft.AspnetCore.Authentication.JWT 
+
+Criar uma seção no appsettings com a chave de autenticação
+
+ ```
+var secret = Encoding.ASCII.GetBytes(Configuration.GetSection("JwtConfigurations:Secret").Value);
+services.AddAuthentication(x =>
+{
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(x =>
+{
+    x.RequireHttpsMetadata = false;
+    x.SaveToken = true;
+    x.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(secret),
+        ValidateIssuer = false,
+        ValidateAudience = false
+    };
+});```
+
+
+
+
 
 
