@@ -39,7 +39,9 @@ Biblioteca Microsoft EntityFrameworkCore
 
 Biblioteca Microsoft EntityFrameworkCore.tools 
 
-Biblioteca Microsoft EntityFrameworkCore.Relational 
+Biblioteca Microsoft EntityFrameworkCore.Relational  
+
+Biblioteca Microsoft EntityFrameworkCore.SQLServer 
 
 
 Configurar as entidades, mapping e contexto
