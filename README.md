@@ -51,7 +51,9 @@ Microsoft.EntityFrameworkCore.Design
 Criar a pasta Configuration e a classe DbFactoryDbContext 
 
 
+Acessar tools-manager-package console 
 
+Executar o comando Add-Migration Base-inicial
 
 
 
