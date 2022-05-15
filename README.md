@@ -26,26 +26,16 @@ Biblioteca microsoft.AspnetCore.Authentication
 
 Biblioteca microsoft.AspnetCore.Authentication.JWT 
 
+Configurar o jew no startup, tanto no app quanto no settings, 
+
+Nas configurações do swagger, configurar para ser possível aplicar a autorização no swagger 
+
+Adicionar Authorization na controller, para que só seja possível realizar as pesquisas com o usuário logado 
+
 Criar uma seção no appsettings com a chave de autenticação
 
- ```
-var secret = Encoding.ASCII.GetBytes(Configuration.GetSection("JwtConfigurations:Secret").Value);
-services.AddAuthentication(x =>
-{
-    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(x =>
-{
-    x.RequireHttpsMetadata = false;
-    x.SaveToken = true;
-    x.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(secret),
-        ValidateIssuer = false,
-        ValidateAudience = false
-    };
-});```
+
+
 
 
 
