@@ -37,14 +37,22 @@ Criar uma seção no appsettings com a chave de autenticação
 # Configurando a persistência de dados
 Biblioteca Microsoft EntityFrameworkCore 
 
-Biblioteca Microsoft EntityFrameworkCore.tools 
-
 Biblioteca Microsoft EntityFrameworkCore.Relational  
 
 Biblioteca Microsoft EntityFrameworkCore.SQLServer 
 
-
 Configurar as entidades, mapping e contexto
+
+## Configurando as migrations
+Biblioteca Microsoft EntityFrameworkCore.tools 
+
+Microsoft.EntityFrameworkCore.Design
+
+Criar a pasta Configuration e a classe DbFactoryDbContext 
+
+
+
+
 
 
 
